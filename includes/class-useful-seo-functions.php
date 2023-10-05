@@ -243,7 +243,7 @@ function useful_seo_functions_init() {
 add_action( 'init', 'useful_seo_functions_init' );
 
 /**
-Function to set Rank Math meta description for a post via API.
+Function to set Rank Math meta description for a post via API
 Sample usage:
 'meta': {'rank_math_description': meta_description}
 **/
@@ -257,3 +257,13 @@ function update_rank_math_description_via_api( $post, $request, $creating ) {
         update_post_meta( $post->ID, 'rank_math_description', sanitize_text_field( $meta_description ) );
     }
 }
+
+/**
+Function to remove any short codes from the post excerpts
+**/
+function remove_shortcode_from_excerpt($content) {
+    // Remove shortcodes from the content
+    $content = strip_shortcodes($content);
+    return $content;
+}
+add_filter('the_excerpt', 'remove_shortcode_from_excerpt');
