@@ -243,7 +243,7 @@ function useful_seo_functions_init() {
 add_action( 'init', 'useful_seo_functions_init' );
 
 /**
-Function to set meta description for a post via API.
+Function to set Rank Math meta description for a post via API.
 Sample usage:
 'meta': {'rank_math_description': meta_description}
 **/
