@@ -22,7 +22,7 @@ class SEO_Functions_Loader {
     public function load_seo_functions() {
         $dir = plugin_dir_path( __FILE__ ) . 'seo-functions/';
         $functions = [];
-
+    
         // Load all function files and retrieve priorities.
         foreach ( scandir( $dir ) as $file ) {
             if ( '.php' === substr( $file, -4 ) ) {
@@ -37,19 +37,18 @@ class SEO_Functions_Loader {
                 }
             }
         }
-
+    
         // Sort functions by priority.
         asort($functions);
-
+    
         // Apply the functions in order of priority.
         foreach ($functions as $func_name => $priority) {
             // Apply the function if the related option is enabled
-            if (isset($this->options[$func_name]) && $this->options[$func_name]) 
+            if (isset($this->options[$func_name]['enabled']) && $this->options[$func_name]['enabled']) 
             {
                 // Call main apply function of each php files in seo-functions folder
                 call_user_func("apply_$func_name");
             }
         }
-
     }
 }

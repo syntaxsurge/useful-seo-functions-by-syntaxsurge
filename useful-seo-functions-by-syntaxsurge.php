@@ -37,3 +37,34 @@ function initialize_seo_plugin() {
     $seo_functions_loader = new SEO_Functions_Loader();
 }
 add_action('plugins_loaded', 'initialize_seo_plugin');
+
+
+// Enable All functions by default
+function get_default_seo_settings() {
+    $dir = plugin_dir_path( __FILE__ ) . 'seo-functions/';
+    $default_settings = [];
+    
+    foreach ( scandir( $dir ) as $file ) {
+        if ( '.php' === substr( $file, -4 ) ) {
+            $func_name = str_replace('.php', '', $file);
+            require_once $dir . $file;
+            
+            if (function_exists($func_name)) {
+                $function_info = call_user_func($func_name);
+                $default_settings[$func_name] = [
+                    'enabled' => 1 // Enable all by default
+                ];
+            }
+        }
+    }
+    
+    return $default_settings;
+}
+
+function activate_useful_seo_functions() {
+    if (false === get_option('useful_seo_functions')) {
+        update_option('useful_seo_functions', get_default_seo_settings());
+    }
+}
+register_activation_hook(__FILE__, 'activate_useful_seo_functions');
+
