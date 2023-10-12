@@ -10,7 +10,16 @@
  * Text Domain: useful-seo-functions-by-syntaxsurge
  */
 
- if ( ! defined( 'ABSPATH' ) ) exit;
+// Ensure Wordpress is running to prevent direct access
+defined( 'ABSPATH' ) || exit;
+
+if (!function_exists('is_admin')) {
+    header('Status: 403 Forbidden');
+    header('HTTP/1.1 403 Forbidden');
+    exit();
+}
+
+define('USEFUL_SEO_FUNCTIONS_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-seo-settings.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/class-seo-functions-loader.php';
@@ -20,8 +29,11 @@ function useful_seo_functions_activation() {
 }
 register_activation_hook( __FILE__, 'useful_seo_functions_activation' );
 
-if ( is_admin() ) {
-    $seo_settings = new SEO_Settings();
-}
+function initialize_seo_plugin() {
+    if ( is_admin() ) {
+        $seo_settings = new SEO_Settings();
+    }
 
-$seo_functions_loader = new SEO_Functions_Loader();
+    $seo_functions_loader = new SEO_Functions_Loader();
+}
+add_action('plugins_loaded', 'initialize_seo_plugin');

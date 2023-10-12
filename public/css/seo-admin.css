@@ -1,0 +1,82 @@
+/* Global Styles */
+.wrap {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: auto;
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+}
+
+/* Section & Fields Styles */
+.settings-section {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+h2 { 
+    color: #333;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.settings-field {
+    margin-bottom: 20px;
+}
+
+.settings-field label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.settings-field p {
+    font-size: 12px;
+    color: #777;
+}
+
+/* Button Styles */
+input[type="submit"] {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid #4CAF50;
+}
