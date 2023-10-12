@@ -13,23 +13,34 @@ if (!function_exists('is_admin')) {
 
 class SEO_Settings {
     private $options;
-
+    
     public function __construct() {
         add_action( 'admin_menu', array( $this, 'add_plugin_page' ) );
         add_action( 'admin_init', array( $this, 'page_init' ) );
-        add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) ); // Enqueue styles
+        add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ), 1000 ); // Enqueue styles
+        
+        // Suppressing other admin notices
+        add_action( 'admin_head', array( $this, 'suppress_admin_notices' ) );
+    }
+    
+    public function suppress_admin_notices() {
+        $screen = get_current_screen();
+        if ( strpos( $screen->base, 'seo-functions' ) !== false ) {
+            remove_all_actions( 'admin_notices' );
+            remove_all_actions( 'all_admin_notices' );
+        }
     }
     
     public function enqueue_admin_styles() {
         // Only load styles on your plugin's settings page
         $screen = get_current_screen();
         if ( strpos( $screen->base, 'seo-functions' ) !== false ) {
-            wp_enqueue_style('seo_functions_admin_style', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'public/css/seo-admin.css', array(), '1.0.2'); // Versioning
+            wp_enqueue_style('seo_functions_admin_style', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'public/css/seo-admin.css', array(), '1.5'); // Versioning
         }
     }
 
     public function add_plugin_page() {
-        add_options_page( 'SEO Functions', 'SEO Functions', 'manage_options', 'seo-functions', array( $this, 'create_admin_page' ) );
+        add_options_page( 'Useful SEO Functions', 'Useful SEO Functions', 'manage_options', 'seo-functions', array( $this, 'create_admin_page' ) );
     }
 
     public function create_admin_page() {
@@ -40,7 +51,22 @@ class SEO_Settings {
             <form method="post" action="options.php">
             <?php
                 settings_fields( 'seo_functions_group' );
-                do_settings_sections( 'seo-functions' );
+                // Iterate through sections and apply .settings-section class
+                global $wp_settings_sections;
+                if ( isset( $wp_settings_sections['seo-functions'] ) ) {
+                    foreach ( (array) $wp_settings_sections['seo-functions'] as $section ) {
+                        echo '<div class="settings-section">';
+                        if ( $section['title'] ) {
+                            echo "<h2>{$section['title']}</h2>\n";
+                        }
+                        if ( $section['callback'] ) {
+                            call_user_func( $section['callback'], $section );
+                        }
+                        echo '<table class="form-table" role="presentation">';
+                        do_settings_fields( 'seo-functions', $section['id'] );
+                        echo '</table></div>';
+                    }
+                }
                 submit_button();
             ?>
             </form>
@@ -106,6 +132,9 @@ class SEO_Settings {
         $inputs = $args['inputs'];
         $options = $this->options[$func_name] ?? [];
         
+        // Wrap fields with .settings-field class
+        echo '<div class="settings-field">';
+        
         // Dynamically generate input fields based on $function_info configuration
         foreach ($inputs as $input) {
             $value = $options[$input['name']] ?? $input['default'];
@@ -137,5 +166,7 @@ class SEO_Settings {
         
         // Output description
         printf('<p class="description">%s</p>', esc_html($description));
+        
+        echo '</div>';
     }
 }
