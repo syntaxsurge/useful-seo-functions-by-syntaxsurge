@@ -18,7 +18,7 @@ function auto_amazon_affiliate_id() {
             [
                 'type' => 'text',
                 'label' => 'Amazon Affiliate ID: ',
-                'name' => 'auto_amazon_affiliate_id',
+                'name' => 'enabled',
                 'default' => 'jadelempleo-20'
             ],
         ],
@@ -38,7 +38,7 @@ function amazon_affiliate_id_injector($content) {
     $options = get_option('useful_seo_functions');
     
     // Get our affiliate ID
-    $affiliate_id = $options['auto_amazon_affiliate_id']['auto_amazon_affiliate_id'] ?? '';
+    $affiliate_id = $options['auto_amazon_affiliate_id']['enabled'] ?? '';
     
     // Ensure we have an affiliate ID to use
     if (empty($affiliate_id)) {

@@ -18,7 +18,7 @@ function update_meta_description() {
             [
                 'type' => 'checkbox',
                 'label' => 'Update meta description',
-                'name' => 'update_meta_description',
+                'name' => 'enabled',
                 'default' => 1  // Check the box by default (optional, omit if you want it unchecked by default)
             ],
         ],

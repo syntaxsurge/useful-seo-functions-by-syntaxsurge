@@ -18,7 +18,7 @@ function enable_meta_description_api() {
             [
                 'type' => 'checkbox',
                 'label' => 'Enable Description API',
-                'name' => 'enable_meta_description_api',
+                'name' => 'enabled',
                 'default' => 1  // Check the box by default (optional, omit if you want it unchecked by default)
             ],
         ],

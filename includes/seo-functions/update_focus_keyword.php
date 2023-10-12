@@ -18,7 +18,7 @@ function update_focus_keyword() {
             [
                 'type' => 'checkbox',
                 'label' => 'Update focus keyword',
-                'name' => 'update_focus_keywords',
+                'name' => 'enabled',
                 'default' => 1  // Check the box by default (optional, omit if you want it unchecked by default)
             ],
         ],

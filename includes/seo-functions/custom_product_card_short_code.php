@@ -18,7 +18,7 @@ function custom_product_card_short_code() {
             [
                 'type' => 'checkbox',
                 'label' => 'Add product card',
-                'name' => 'custom_product_card_short_code',
+                'name' => 'enabled',
                 'default' => 1  // Check the box by default (optional, omit if you want it unchecked by default)
             ],
         ],

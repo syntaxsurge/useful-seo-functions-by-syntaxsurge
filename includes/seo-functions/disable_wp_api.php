@@ -18,7 +18,7 @@ function disable_wp_api() {
             [
                 'type' => 'checkbox',
                 'label' => 'Disable API for public',
-                'name' => 'disable_wp_api',
+                'name' => 'enabled',
                 'default' => 1  // Check the box by default (optional, omit if you want it unchecked by default)
             ],
         ],

@@ -43,6 +43,7 @@ class SEO_Functions_Loader {
     
         // Apply the functions in order of priority.
         foreach ($functions as $func_name => $priority) {
+            
             // Apply the function if the related option is enabled
             if (isset($this->options[$func_name]['enabled']) && $this->options[$func_name]['enabled']) 
             {

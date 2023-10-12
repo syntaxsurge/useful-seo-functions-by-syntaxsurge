@@ -18,7 +18,7 @@ function auto_insert_product_card() {
             [
                 'type' => 'checkbox',
                 'label' => 'Auto insert product card',
-                'name' => 'auto_insert_product_card',
+                'name' => 'enabled',
                 'default' => 1  // Check the box by default (optional, omit if you want it unchecked by default)
             ],
         ],
@@ -38,6 +38,18 @@ function cpc_add_shortcode_to_content($content) {
     if (is_single()) {
         $slug = basename(get_permalink());
         $name = str_replace('-', ' ', $slug);
+        
+        // Get all SEO function options
+        $options = get_option('useful_seo_functions');
+        
+        // Get your amazon affiliate ID
+        $affiliate_id = $options['auto_amazon_affiliate_id']['enabled'] ?? '';
+        
+        if ($affiliate_id) {
+            $affiliate_parameter = '&tag=' . $affiliate_id;   
+        } else {
+            $affiliate_parameter = '';
+        }
                 
         // URL encode the name for use in a query parameter
         $encoded_name = urlencode(ucwords($name));
@@ -54,12 +66,18 @@ function cpc_add_shortcode_to_content($content) {
                 document.addEventListener("DOMContentLoaded", function() {
                     // Find the injected content and the article element
                     var injectedContent = document.getElementById("cpc-injected-content");
-                    var articleElement = document.querySelector("article");  // General assumption
-            
-                    // Ensure elements are found
-                    if (injectedContent && articleElement) {
-                        // Insert the injected content before the article
-                        articleElement.parentNode.insertBefore(injectedContent, articleElement);
+                    var articleElement = document.querySelector("article");
+                    var mainElement = document.querySelector("main");
+        
+                    // Ensure the injected content was found
+                    if (injectedContent) {
+                        if (articleElement) {
+                            // Insert the injected content before the article
+                            articleElement.parentNode.insertBefore(injectedContent, articleElement);
+                        } else if (mainElement) {
+                            // Insert the injected content before the main if no article was found
+                            mainElement.parentNode.insertBefore(injectedContent, mainElement);
+                        }
                     }
                 });
             </script>

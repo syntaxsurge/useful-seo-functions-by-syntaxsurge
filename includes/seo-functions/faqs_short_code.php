@@ -18,7 +18,7 @@ function faqs_short_code() {
             [
                 'type' => 'checkbox',
                 'label' => 'FAQs Schortcode',
-                'name' => 'faq_short_code',
+                'name' => 'enabled',
                 'default' => 1  // Check the box by default (optional, omit if you want it unchecked by default)
             ],
         ],
