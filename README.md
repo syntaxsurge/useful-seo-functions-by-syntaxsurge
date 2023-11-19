@@ -2,10 +2,6 @@
 
 This plugin provides a suite of SEO and Security functions to enhance the functionality of your WordPress site. It includes features like SERPcraft.com Autoposting, Affiliate Settings, Security Settings, and comprehensive SEO Settings.
 
-## Plugin Overview
-
-**Useful SEO Functions by SyntaxSurge** is designed to enhance your WordPress site's SEO and security capabilities. It offers a range of functionalities, from automating affiliate links to improving the visibility of your posts on search engines.
-
 ## Table of Contents
 - [Plugin Overview](#plugin-overview)
 - [Installation](#installation)
@@ -29,6 +25,10 @@ This plugin provides a suite of SEO and Security functions to enhance the functi
   * [Security Settings](#security-settings)
   * [SEO Settings](#seo-settings)
 - [Contributing](#contributing)
+
+## Plugin Overview
+
+**Useful SEO Functions by SyntaxSurge** is designed to enhance your WordPress site's SEO and security capabilities. It offers a range of functionalities, from automating affiliate links to improving the visibility of your posts on search engines.
 
 ## Installation
 
