@@ -62,7 +62,7 @@ git config --global user.email "syntaxsurge@gmail.com" && git config --global us
 - To initialize and push files to your GitHub Repository, first navigate inside the folder of your wordpress using `cd` command, for example, if you are using `aapanel`, you can run this command to change directory:
 
 ```bash
-cd /www/wwwroot/monimag.com/wp-content/plugins/useful-seo-functions-by-syntaxsurge
+cd /www/wwwroot/example.com/wp-content/plugins/useful-seo-functions-by-syntaxsurge
 ```
 
 **To push the files to GitHub:**
@@ -82,7 +82,7 @@ git push -u origin main
 ##### Clone Files to your Server
 - Navigate first to the plugin folder, if you are using `aapanel`, you can run this command to change directory and create the missing directories if not yet exist:
 ```bash
-dir='/www/wwwroot/monimag.com/wp-content/plugins/useful-seo-functions-by-syntaxsurge'; [ -d "$dir" ] || sudo -u www mkdir -p "$dir" && cd "$dir"
+dir='/www/wwwroot/example.com/wp-content/plugins/useful-seo-functions-by-syntaxsurge'; [ -d "$dir" ] || sudo -u www mkdir -p "$dir" && cd "$dir"
 ```
 
 - To delete all subdirectories and files, including the hidden ones, but exclude the parent directory (..), from the current directory before cloning it:
