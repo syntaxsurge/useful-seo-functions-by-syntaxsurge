@@ -13,7 +13,7 @@ if (!function_exists('is_admin')) {
 function custom_product_card_short_code() {
     return [
         'title' => 'Add a product card via a shortcode',
-        'description' => 'If there is already an affiliate tag, It replaces it if it is not the desired one.',
+        'description' => "If there is already an affiliate tag, it will be replaced if it is not the desired one. The relationship between the current page and the linked Amazon affiliate page is automatically set to 'sponsored' and 'no follow' (rel='nofollow sponsored').",
         'inputs' => [
             [
                 'type' => 'checkbox',
@@ -32,7 +32,7 @@ function apply_custom_product_card_short_code() {
     // Load CSS styles for product cards
     if ( ! function_exists('cpc_enqueue_styles') ) {
         function cpc_enqueue_styles() {
-            wp_enqueue_style('cpc_styles', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'public/css/product-cards.css');
+            wp_enqueue_style('cpc_styles', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'public/css/product-cards.css', array(), '1.0.9');
         }
         add_action('wp_enqueue_scripts', 'cpc_enqueue_styles');
     }
@@ -84,7 +84,7 @@ function cpc_shortcode($atts) {
 
     ob_start();
     ?>
-    <a href="<?php echo $link; ?>" class="product-card-link" target="_blank">
+    <a href="<?php echo $link; ?>" rel="nofollow sponsored" class="product-card-link" target="_blank">
         <div class="product-card">
             <?php 
             // Check if tag should be displayed

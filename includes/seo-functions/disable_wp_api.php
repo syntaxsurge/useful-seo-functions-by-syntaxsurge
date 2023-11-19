@@ -22,7 +22,7 @@ function disable_wp_api() {
                 'default' => 1  // Check the box by default (optional, omit if you want it unchecked by default)
             ],
         ],
-        'category' => 'Security',
+        'category' => 'Security Settings',
         'priority' => 10, // lower priority means earlier execution
     ];
 }

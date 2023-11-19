@@ -40,6 +40,7 @@
 .product-images {
     display: flex;
     flex-shrink: 0;
+	margin: auto;
 }
 
 .product-images img {
@@ -54,12 +55,14 @@
 
 .product-name {
     flex-grow: 1;
+	margin: auto;
     padding: 0 15px;
     font-size: 20px;
     font-weight: 700; 
     color: #266c61; 
     line-height: 1.4;
     overflow: hidden;
+	text-align: center;
     display: -webkit-box;
     -webkit-line-clamp: 4; /* Number of lines to show */
     -webkit-box-orient: vertical;

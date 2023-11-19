@@ -22,7 +22,7 @@ function update_focus_keyword() {
                 'default' => 1  // Check the box by default (optional, omit if you want it unchecked by default)
             ],
         ],
-        'category' => 'SEO',
+        'category' => 'SEO Settings',
         'priority' => 10, // lower priority means earlier execution
     ];
 }

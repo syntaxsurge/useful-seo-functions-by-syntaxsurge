@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: Useful SEO Functions by SyntaxSurge
- * Plugin URI: https://syntaxsurge.com/
+ * Plugin URI: https://serpcraft.com/
  * Description: This plugin provides useful SEO functions for your WordPress site.
- * Version: 1.0.0
+ * Version: 1.0.2
  * Author: SyntaxSurge
  * Author URI: https://syntaxsurge.com
  * License: GPLv2 or later
@@ -76,3 +76,17 @@ function initialize_seo_plugin() {
     $seo_functions_loader = new SEO_Functions_Loader();
 }
 add_action('plugins_loaded', 'initialize_seo_plugin');
+
+
+// Hook into the filter for the plugin.
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'seo_functions_add_settings_link');
+
+function seo_functions_add_settings_link($links) {
+    // Build and escape the URL to your settings page.
+    $settings_link = '<a href="' . esc_url(admin_url('options-general.php?page=seo-functions')) . '">' . __('Settings', 'text-domain') . '</a>';
+    
+    // Add your settings link to the array of links.
+    array_unshift($links, $settings_link);
+    
+    return $links;
+}

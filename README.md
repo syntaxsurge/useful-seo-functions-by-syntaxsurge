@@ -1,12 +1,18 @@
-# useful-seo-functions
-This plugin provides useful SEO and Security functions for your WordPress site.
+# Useful SEO Functions by SyntaxSurge
+
+This plugin provides a suite of SEO and Security functions to enhance the functionality of your WordPress site. It includes features like SERPcraft.com Autoposting, Affiliate Settings, Security Settings, and comprehensive SEO Settings.
+
+## Plugin Overview
+
+**Useful SEO Functions by SyntaxSurge** is designed to enhance your WordPress site's SEO and security capabilities. It offers a range of functionalities, from automating affiliate links to improving the visibility of your posts on search engines.
 
 ## Table of Contents
+- [Plugin Overview](#plugin-overview)
 - [Installation](#installation)
-  * [1. Installation of Git](#3-installation-of-git)
+  * [1. Installation of Git](#1-installation-of-git)
     + [For CentOS Linux distribution](#for-centos-linux-distribution)
     + [For Ubuntu/Debian-based Linux distributions](#for-ubuntudebian-based-linux-distributions)
-  * [2. GitHub Repository Management](#4-github-repository-management)
+  * [2. GitHub Repository Management](#2-github-repository-management)
     + [OPTION #1. INITIALIZE and PUSH files to GitHub (Sender)](#option-1-initialize-and-push-files-to-github-sender)
     + [OPTION #2. INITIALIZE the files by using the CLONE command from GitHub (Receiver)](#option-2-initialize-the-files-by-using-the-clone-command-from-github-receiver)
       - [Clone Files to your Server](#clone-files-to-your-server)
@@ -17,7 +23,12 @@ This plugin provides useful SEO and Security functions for your WordPress site.
     + [OPTION #4. Update or PULL files (Receiver)](#option-4-update-or-pull-files-receiver)
       - [Pull Files from Repository to Server](#pull-files-from-repository-to-server)
       - [Pull Files from Repository to Local Computer](#pull-files-from-repository-to-local-computer)
-
+- [Plugin Features](#plugin-features)
+  * [SERPcraft.com Autoposting](#serpcraftcom-autoposting)
+  * [Affiliate Settings](#affiliate-settings)
+  * [Security Settings](#security-settings)
+  * [SEO Settings](#seo-settings)
+- [Contributing](#contributing)
 
 ## Installation
 
@@ -169,3 +180,47 @@ This ensures the modified files remain only on your local machine and are not re
 ```bash
 git pull
 ```
+
+## Plugin Features
+
+### SERPcraft.com Autoposting
+
+This feature automates the process of posting content to your WordPress site from SERPcraft.com. It streamlines the content publication workflow, ensuring timely and efficient updates to your site.
+
+- **Select User:** 
+  - Description: Choose the WordPress user account under which the autoposted content will be published. This ensures that all auto-generated posts are attributed to a specific user, maintaining consistency and accountability.
+  - Usage: From the dropdown menu, select the WordPress user who will be the author of the autoposted content.
+
+- **Application Name:** 
+  - Description: Define the name of the application or service that will be used for autoposting. This is typically the identifier for the SERPcraft.com integration, helping to manage and track the source of autoposted content.
+  - Usage: Enter the name of the application or service in the provided field. This name is used for identification and management purposes.
+
+- **Generate Password:** 
+  - Description: Create a secure, unique password for the SERPcraft.com integration. This password is used to authenticate the autoposting process, ensuring secure and authorized access to your WordPress site.
+  - Usage: Click on the 'Generate Password' button to create a new password. This password will be used for the secure authentication of the autoposting service. Make sure to save this password securely, as it is crucial for the integration's security.
+
+### Affiliate Settings
+- Adds your Amazon affiliate ID to all Amazon links.
+- Auto-inserts product card shortcode below the header.
+- Replaces existing affiliate tags if not desired.
+
+### Security Settings
+- Disable public view of WordPress API for unauthorized users.
+
+### SEO Settings
+- Enables Rank Math Meta Description of Posts via API.
+- Shortcodes for structuring FAQs to schema for rich results.
+- Auto-update of Rank Math focus keyword and meta description.
+
+## Contributing
+We welcome contributions to improve this plugin. If you have suggestions or modifications, please feel free to submit a pull request.
+
+To submit a pull request:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes.
+4. Commit your changes (`git commit -am 'Add some feature'`).
+5. Push to the branch (`git push origin feature-branch`).
+6. Create a new Pull Request.
+
+Your contributions and suggestions are greatly appreciated!
