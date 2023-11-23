@@ -1,0 +1,64 @@
+/* Base table styles */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    /* Makes the table scrollable on small screens */
+}
+
+table {
+    border-collapse: separate;
+    /* Allows rounded corners */
+    border-spacing: 0;
+    width: 100%;
+    font-family: 'Roboto', Arial, sans-serif;
+    /* Modern and clean font */
+}
+
+th,
+td {
+    padding: 15px;
+    /* Slightly larger padding for readability */
+    text-align: left;
+    font-size: 16px;
+    /* Larger font size for readability */
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+    /* Light grey for striped rows */
+}
+
+/* Hover state for rows */
+tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Minimal design for borders */
+td,
+th {
+    border: 1px solid #e3e6f0;
+}
+
+@media screen and (max-width: 600px) {
+
+    /* Responsiveness: hide less important columns on small screens */
+    .table-hide {
+        display: none;
+    }
+}
+
+/* Add a modern shadow effect to the table */
+table {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Ensures the viewport is set for responsive designs */
+@media screen and (min-width: 601px) {
+    .table-responsive {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+    }
+}
+
+.img-responsive {
+    width: 100%;
+}

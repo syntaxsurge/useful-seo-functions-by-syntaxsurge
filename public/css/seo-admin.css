@@ -118,7 +118,6 @@ input[type="submit"]:hover {
 	padding: 20px;
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0,0,0,0.1);
-	max-width: 500px;
 	margin: 0 auto;
 	margin-top: 20px;
 }
@@ -127,6 +126,10 @@ input[type="submit"]:hover {
 	display: block;
 	margin-bottom: 8px;
 	font-weight: bold;
+}
+
+.usf_select {
+    max-width: 50rem !important;
 }
 
 .app-password-container select,
@@ -162,22 +165,28 @@ input[type="submit"]:hover {
     word-break: break-word; /* break long passwords to the next line */
 }
 
+.app-password-result {
+    padding: 30px 15px;
+    border: 1px solid #4caf50; /* Green */
+    background-color: #e8f5e9; /* Light green */
+    margin: 15px 0;
+    border-radius: 5px;
+}
+
+.password-warning {
+    color: #c20c0c;
+    font-weight: 600;
+}
+
 #copyButton {
     padding: 8px 15px;
+    font-weight: 600;
 }
 
 .error-card {
     padding: 10px 15px;
     border: 1px solid #f44336; /* Red */
     background-color: #ffebee; /* Light red */
-    margin: 15px 0;
-    border-radius: 5px;
-}
-
-.app-password-result {
-    padding: 10px 15px;
-    border: 1px solid #4caf50; /* Green */
-    background-color: #e8f5e9; /* Light green */
     margin: 15px 0;
     border-radius: 5px;
 }
