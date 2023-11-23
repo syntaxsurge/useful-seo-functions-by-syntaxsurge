@@ -3,7 +3,7 @@
  * Plugin Name: Useful SEO Functions by SyntaxSurge
  * Plugin URI: https://serpcraft.com/
  * Description: This plugin provides useful SEO functions for your WordPress site.
- * Version: 1.0.3
+ * Version: 1.0.4
  * Author: SyntaxSurge
  * Author URI: https://syntaxsurge.com
  * License: GPLv2 or later
@@ -58,10 +58,15 @@ function get_default_seo_settings() {
 // Enable All seo functions by default
 function activate_useful_seo_functions() {
     $default_settings = get_default_seo_settings();
-    
-    if (false === get_option('useful_seo_functions')) {
-        update_option('useful_seo_functions', $default_settings);
+
+    // Check if 'useful_seo_functions' option already exists
+    if (get_option('useful_seo_functions') !== false) {
+        // Delete the existing 'useful_seo_functions' option
+        delete_option('useful_seo_functions');
     }
+
+    // Now set the new default settings
+    update_option('useful_seo_functions', $default_settings);
 }
 
 // Trigger on plugin activation
