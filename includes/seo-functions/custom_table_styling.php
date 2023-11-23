@@ -59,13 +59,12 @@ function inject_custom_table_styles() {
         // Inject a style tag with the dynamic header and text colors
         echo "<style>
                 th {
-                    background-color: $header_color;
-                    color: $text_color; // Apply the text color
+                    background-color: $header_color !important;
+                    color: $text_color !important;
                     border-bottom: 3px solid #0056b3;
                     border-top-left-radius: 8px;
                     border-top-right-radius: 8px;
                 }
-                /* Additional custom styles can be added here */
               </style>";
 
         // Enqueue your external CSS file
