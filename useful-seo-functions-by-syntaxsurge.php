@@ -3,7 +3,7 @@
  * Plugin Name: Useful SEO Functions by SyntaxSurge
  * Plugin URI: https://serpcraft.com/
  * Description: This plugin provides useful SEO functions for your WordPress site.
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author: SyntaxSurge
  * Author URI: https://syntaxsurge.com
  * License: GPLv2 or later
@@ -95,3 +95,54 @@ function seo_functions_add_settings_link($links) {
     
     return $links;
 }
+
+
+// Function to ensure Authorization header is passed through
+function ensure_http_authorization_header() {
+    // Check if the Authorization header is set in the request
+    if (isset($_SERVER['HTTP_AUTHORIZATION']) || isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+        // Do nothing if it's already set
+        return;
+    }
+
+    // Check for the Authorization header under different server environments
+    if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+        // Set it as HTTP_AUTHORIZATION if found under REDIRECT_HTTP_AUTHORIZATION
+        $_SERVER['HTTP_AUTHORIZATION'] = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+    } elseif (isset($_SERVER['HTTP_AUTHORIZATION'])) {
+        // Set it as HTTP_AUTHORIZATION if found directly under HTTP_AUTHORIZATION
+        $_SERVER['HTTP_AUTHORIZATION'] = $_SERVER['HTTP_AUTHORIZATION'];
+    }
+}
+
+// Add the function to the 'init' hook
+add_action('init', 'ensure_http_authorization_header');
+
+
+function custom_header_authenticate($user) {
+    // No authentication for non-REST requests
+    if (!defined('REST_REQUEST') || !REST_REQUEST) {
+        return $user;
+    }
+
+    // Check for existence of custom header 'Serp-Craft'
+    $custom_header = isset($_SERVER['HTTP_SERP_CRAFT']) ? $_SERVER['HTTP_SERP_CRAFT'] : null;
+    
+    if (!$custom_header) {
+        return $user;
+    }
+
+    // Decode the header value (assuming it's base64-encoded username:password)
+    list($username, $password) = explode(':', base64_decode($custom_header), 2);
+
+    // Use WordPress's built-in function to authenticate
+    $user = wp_authenticate($username, $password);
+
+    if (is_wp_error($user)) {
+        return null;
+    }
+
+    return $user->ID;
+}
+
+add_filter('determine_current_user', 'custom_header_authenticate');

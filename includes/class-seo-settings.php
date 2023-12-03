@@ -271,7 +271,15 @@ class SEO_Settings
                         checked(1, $value, false)
                     );
                     break;
-                    // Add more case blocks for additional input types as needed
+                case 'select':
+                    // Handle select input type
+                    printf('<label for="%1$s[%2$s]">%3$s</label>', $func_name, $input['name'], esc_html($input['label']));
+                    echo '<select id="' . esc_attr($func_name) . '[' . esc_attr($input['name']) . ']" name="useful_seo_functions[' . esc_attr($func_name) . '][' . esc_attr($input['name']) . ']">';
+                    foreach ($input['options'] as $option) {
+                        echo '<option value="' . esc_attr($option) . '"' . selected($value, $option, false) . '>' . esc_html($option) . '</option>';
+                    }
+                    echo '</select>';
+                    break;
             }
             echo '<br>';
         }
