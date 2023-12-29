@@ -164,12 +164,14 @@ function register_serpcraft_api_routes()
     register_rest_route('serpcraft/v1', '/posts', array(
         'methods' => WP_REST_Server::ALLMETHODS,
         'callback' => 'handle_wp_v2_posts',
+        'permission_callback' => '__return_true', // Add this line to make the route publicly accessible
     ));
 
     // Register '/wp-json/serpcraft/v1/media' endpoint with support for all request types
     register_rest_route('serpcraft/v1', '/media', array(
         'methods' => WP_REST_Server::ALLMETHODS,
         'callback' => 'handle_wp_v2_media',
+        'permission_callback' => '__return_true', // Add this line to make the route publicly accessible
     ));
 
     // Register '/wp-json/serpcraft/v1/categories' endpoint with support for all request types
@@ -181,6 +183,7 @@ function register_serpcraft_api_routes()
                 'default' => 100,
             ),
         ),
+        'permission_callback' => '__return_true', // Add this line to make the route publicly accessible
     ));
 }
 

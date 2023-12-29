@@ -1,8 +1,33 @@
 /* Base table styles */
 .table-responsive {
     width: 100%;
-    overflow-x: auto;
-    /* Makes the table scrollable on small screens */
+    margin-bottom: 1.5rem;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+/* For screens smaller than 768px, allow x-scrolling */
+@media (max-width: 767.98px) {
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+.table-responsive::-webkit-scrollbar {
+    -webkit-appearance: none;
+    height: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+.table-responsive td,
+.table-responsive th {
+    white-space: nowrap;
 }
 
 table {
@@ -18,7 +43,7 @@ th,
 td {
     padding: 15px;
     /* Slightly larger padding for readability */
-    text-align: left;
+    text-align: center;
     font-size: 16px;
     /* Larger font size for readability */
 }
