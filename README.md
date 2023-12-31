@@ -7,23 +7,26 @@ This plugin provides a suite of SEO and Security functions to enhance the functi
 
 - [Plugin Overview](#plugin-overview)
 - [Installation](#installation)
-   * [1. Installation of Git](#1-installation-of-git)
-      + [For CentOS Linux distribution](#for-centos-linux-distribution)
-      + [For Ubuntu/Debian-based Linux distributions](#for-ubuntudebian-based-linux-distributions)
+   * [Automatic Installation (Recommended)](#automatic-installation-recommended)
+   * [Manual Installation](#manual-installation)
+   * [Installation using Git](#installation-using-git)
+      * [1. Installation of Git](#1-installation-of-git)
+         + [For CentOS Linux distribution](#for-centos-linux-distribution)
+         + [For Ubuntu/Debian-based Linux distributions](#for-ubuntudebian-based-linux-distributions)
 
-   * [2. GitHub Repository Management](#2-github-repository-management)
-      + [OPTION #1. INITIALIZE and PUSH files to GitHub (Sender)](#option-1-initialize-and-push-files-to-github-sender)
-      + [OPTION #2. INITIALIZE the files by using the CLONE command from GitHub (Receiver)](#option-2-initialize-the-files-by-using-the-clone-command-from-github-receiver)
-         - [Clone Files to your Server](#clone-files-to-your-server)
-         - [Clone Files to your Local Computer](#clone-files-to-your-local-computer)
+      * [2. GitHub Repository Management](#2-github-repository-management)
+         + [OPTION #1. INITIALIZE and PUSH files to GitHub (Sender)](#option-1-initialize-and-push-files-to-github-sender)
+         + [OPTION #2. INITIALIZE the files by using the CLONE command from GitHub (Receiver)](#option-2-initialize-the-files-by-using-the-clone-command-from-github-receiver)
+            - [Clone Files to your Server](#clone-files-to-your-server)
+            - [Clone Files to your Local Computer](#clone-files-to-your-local-computer)
 
-      + [OPTION #3. To PUSH file changes to GitHub (Sender)](#option-3-to-push-file-changes-to-github-sender)
-         - [Push Files to Repository from Server](#push-files-to-repository-from-server)
-         - [Push Files to Repository from Local Computer](#push-files-to-repository-from-local-computer)
+         + [OPTION #3. To PUSH file changes to GitHub (Sender)](#option-3-to-push-file-changes-to-github-sender)
+            - [Push Files to Repository from Server](#push-files-to-repository-from-server)
+            - [Push Files to Repository from Local Computer](#push-files-to-repository-from-local-computer)
 
-      + [OPTION #4. Update or PULL files (Receiver)](#option-4-update-or-pull-files-receiver)
-         - [Pull Files from Repository to Server](#pull-files-from-repository-to-server)
-         - [Pull Files from Repository to Local Computer](#pull-files-from-repository-to-local-computer)
+         + [OPTION #4. Update or PULL files (Receiver)](#option-4-update-or-pull-files-receiver)
+            - [Pull Files from Repository to Server](#pull-files-from-repository-to-server)
+            - [Pull Files from Repository to Local Computer](#pull-files-from-repository-to-local-computer)
 
 - [Plugin Features](#plugin-features)
    * [SERPcraft.com Autoposting](#serpcraftcom-autoposting)
@@ -73,8 +76,6 @@ This feature automates the process of posting content to your WordPress site fro
 - Enables Rank Math Meta Description of Posts via API.
 - Shortcodes for structuring FAQs to schema for rich results.
 - Auto-update of Rank Math focus keyword and meta description.
-
-## Installation
 
 ## Installation
 
