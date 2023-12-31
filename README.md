@@ -105,7 +105,7 @@ This section provides a step-by-step guide on how to install the **Useful SEO Fu
 ### Manual Installation
 
 1. **Download the Plugin:**
-   Download the plugin zip file from the WordPress Plugin Directory or the official website of **Useful SEO Functions by SyntaxSurge**.
+   Download the plugin zip file from the WordPress Plugin Directory or the official website of **Useful SEO Functions by SyntaxSurge**. [Download the latest version of the plugin HERE](https://serpcraft.tawk.help/article/download-wordpress-plugin-for-serpcraftcom)
 
 2. **Upload the Plugin:**
    From your WordPress Dashboard, navigate to `Plugins > Add New`. There, you will find an option to `Upload Plugin` next to the page title. Click it.
