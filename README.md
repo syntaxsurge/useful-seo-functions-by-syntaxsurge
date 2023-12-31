@@ -1,8 +1,3 @@
----
-runme:
-  id: 01HJZ7K460KGYDAV4HJSAJX9A9
-  version: v2.0
----
 
 # Useful SEO Functions by SyntaxSurge
 
@@ -81,35 +76,80 @@ This feature automates the process of posting content to your WordPress site fro
 
 ## Installation
 
-### 1. Installation of Git
+## Installation
+
+This section provides a step-by-step guide on how to install the **Useful SEO Functions by SyntaxSurge** plugin on your WordPress site.
+
+### Automatic Installation (Recommended)
+
+1. **Login to your WordPress Dashboard:**
+   Navigate to your WordPress site’s admin area by typing in `yourdomain.com/wp-admin` in your browser's address bar and logging in with your username and password.
+
+2. **Access the Plugin Installation Page:**
+   Once you are logged in, navigate to `Plugins > Add New` in the left-hand sidebar menu.
+
+3. **Search for the Plugin:**
+   Use the search bar on the top right of the Add Plugins page and type in “Useful SEO Functions by SyntaxSurge.”
+
+4. **Install the Plugin:**
+   You will see the plugin listed in the search results. Click the `Install Now` button next to the plugin name.
+
+5. **Activate the Plugin:**
+   Once the installation is complete, the `Install Now` button will change to `Activate`. Click this button to activate the plugin on your website.
+
+6. **Configure Plugin Settings:**
+   After activation, you may need to configure the plugin settings according to your preferences. Find the plugin settings by navigating to the SEO or Settings menu in your WordPress dashboard, or the plugin may add its own menu item. Follow the on-screen instructions to configure your SERPcraft.com Autoposting, Affiliate Settings, Security Settings, and SEO Settings.
+
+
+### Manual Installation
+
+1. **Download the Plugin:**
+   Download the plugin zip file from the WordPress Plugin Directory or the official website of **Useful SEO Functions by SyntaxSurge**.
+
+2. **Upload the Plugin:**
+   From your WordPress Dashboard, navigate to `Plugins > Add New`. There, you will find an option to `Upload Plugin` next to the page title. Click it.
+
+3. **Choose the Downloaded File:**
+   Click on `Choose File` and select the zip file you've previously downloaded, then click `Install Now`.
+
+4. **Activate the Plugin:**
+   After the installation process is complete, click on `Activate Plugin` to start using the plugin on your WordPress site.
+
+5. **Configure Plugin Settings:**
+   Once activated, proceed to the plugin's settings page as mentioned in the automatic installation method and customize the settings as needed.
+
+
+### Installation using Git
+
+#### 1. Installation of Git
 
 If you haven't installed Git yet, follow these steps to install it:
 
-#### For CentOS Linux distribution:
+##### For CentOS Linux distribution:
 
-```bash {"id":"01HJZ7K460KGYDAV4HHS1VF97T"}
+```bash
 sudo yum update -y && sudo yum install git -y
 ```
 
-#### For Ubuntu/Debian-based Linux distributions:
+##### For Ubuntu/Debian-based Linux distributions:
 
-```bash {"id":"01HJZ7K460KGYDAV4HHVMAN5R4"}
+```bash
 sudo apt-get update && sudo apt-get install git -y
 ```
 
-### 2. GitHub Repository Management
+#### 2. GitHub Repository Management
 
-#### OPTION #1. INITIALIZE and *PUSH* files to GitHub (Sender)
+##### OPTION #1. INITIALIZE and *PUSH* files to GitHub (Sender)
 
 - If you have not registered your GitHub's email and password in your terminal yet:
 
-```bash {"id":"01HJZ7K460KGYDAV4HHYYH5YZ5"}
+```bash
 git config --global user.email "syntaxsurge@gmail.com" && git config --global user.name "syntaxsurge"
 ```
 
 - To initialize and push files to your GitHub Repository, first navigate inside the folder of your wordpress using `cd` command, for example, if you are using `aapanel`, you can run this command to change directory:
 
-```bash {"id":"01HJZ7K460KGYDAV4HJ2655T9K"}
+```bash
 cd /www/wwwroot/example.com/wp-content/plugins/useful-seo-functions-by-syntaxsurge
 ```
 
@@ -117,7 +157,7 @@ cd /www/wwwroot/example.com/wp-content/plugins/useful-seo-functions-by-syntaxsur
 
 - You can do the same code in your local computer or server, just make sure you navigate to the directory where the source code is saved.
 
-```bash {"id":"01HJZ7K460KGYDAV4HJ54PSQ82"}
+```bash
 REPO_NAME='useful-seo-functions-by-syntaxsurge'
 git init && \
 git add . && \
@@ -127,19 +167,19 @@ git branch -M main && \
 git push -u origin main
 ```
 
-#### OPTION #2. INITIALIZE the files by using the *CLONE* command from GitHub (Receiver)
+##### OPTION #2. INITIALIZE the files by using the *CLONE* command from GitHub (Receiver)
 
-##### Clone Files to your Server
+###### Clone Files to your Server
 
 - Navigate first to the plugin folder, if you are using `aapanel`, you can run this command to change directory and create the missing directories if not yet exist:
 
-```bash {"id":"01HJZ7K460KGYDAV4HJ6SZJ7FS"}
+```bash
 dir='/www/wwwroot/example.com/wp-content/plugins/useful-seo-functions-by-syntaxsurge'; [ -d "$dir" ] || sudo -u www mkdir -p "$dir" && cd "$dir"
 ```
 
 - To delete all subdirectories and files, including the hidden ones, but exclude the parent directory (..), from the current directory before cloning it:
 
-```bash {"id":"01HJZ7K460KGYDAV4HJ9X03J3T"}
+```bash
 sudo rm -rf * .[^.]*
 ```
 
@@ -155,7 +195,7 @@ sudo rm -rf * .[^.]*
 
 **Here's the corresponding script to `CLONE` the Repository:**
 
-```bash {"id":"01HJZ7K460KGYDAV4HJCMNZSN9"}
+```bash
 REPO_NAME='useful-seo-functions-by-syntaxsurge'
 sudo chown -R www:www /home/www && \
 sudo -u www git config --global credential.helper store && \
@@ -170,54 +210,54 @@ sudo chown -R www:www .git/
 
 When prompted, provide your GitHub credentials. This command configures Git to store your credentials, clones the latest files from GitHub, and ensures your credentials are securely stored with restricted permissions.
 
-##### Clone Files to your Local Computer
+###### Clone Files to your Local Computer
 
 - To save the username and password and clone the repository:
 
-```bash {"id":"01HJZ7K460KGYDAV4HJDM8VMFD"}
+```bash
 git config --global credential.helper store && git clone https://github.com/syntaxsurge/useful-seo-functions-by-syntaxsurge.git
 ```
 
 - To clone the repository only:
 
-```bash {"id":"01HJZ7K460KGYDAV4HJE276CBZ"}
+```bash
 git clone https://github.com/syntaxsurge/useful-seo-functions-by-syntaxsurge.git
 ```
 
-#### OPTION #3. To *PUSH* file changes to GitHub (Sender)
+##### OPTION #3. To *PUSH* file changes to GitHub (Sender)
 
 - This is Applicable only after Git initialization.
 - You should change the `commit files` message to something descriptive:
 
-##### Push Files to Repository from Server:
+###### Push Files to Repository from Server:
 
 - Register your GitHub's email and password in your terminal first using `www` user from your server
 
-```bash {"id":"01HJZ7K460KGYDAV4HJGW9KZYF"}
+```bash
 sudo -u www git config --global user.email "syntaxsurge@gmail.com" && sudo -u www git config --global user.name "syntaxsurge"
 ```
 
 - Push the files using `www` user from your server:
 
-```bash {"id":"01HJZ7K460KGYDAV4HJJGE6WQR"}
+```bash
 git add . && git commit -m "commit files" && sudo -u www git push -u origin main
 ```
 
-##### Push Files to Repository from Local Computer
+###### Push Files to Repository from Local Computer
 
-```bash {"id":"01HJZ7K460KGYDAV4HJNNCDZC7"}
+```bash
 git add . && git commit -m "commit files" && git push -u origin main
 ```
 
-#### OPTION #4. Update or *PULL* files (Receiver)
+##### OPTION #4. Update or *PULL* files (Receiver)
 
 - This is Applicable only after Git initialization or you already cloned the repository before.
 
-##### Pull Files from Repository to Server
+###### Pull Files from Repository to Server
 
 - To update the repository, if there are new updates, use:
 
-```bash {"id":"01HJZ7K460KGYDAV4HJNPPMKZS"}
+```bash
 sudo chown -R www:www .git/ && \
 sudo -u www git pull && \
 chmod -R 600 README.md
@@ -225,7 +265,7 @@ chmod -R 600 README.md
 
 However, if you updated some files in your current git directory, To temporarily store changes you've made in your working directory when you don't want to commit them yet, run these commands:
 
-```bash {"id":"01HJZ7K460KGYDAV4HJQX836W6"}
+```bash
 sudo chown -R www:www .git/ && \
 git stash && \
 sudo -u www git pull && \
@@ -234,11 +274,11 @@ chmod -R 600 README.md
 
 This ensures the modified files remain only on your local machine and are not reflected in the GitHub repository. If you wish to update the saved repository on GitHub, you should commit the changes and then push them.
 
-##### Pull Files from Repository to Local Computer
+###### Pull Files from Repository to Local Computer
 
 - To pull the latest updates in the repository:
 
-```bash {"id":"01HJZ7K460KGYDAV4HJRSJ7VD5"}
+```bash
 git pull
 ```
 
