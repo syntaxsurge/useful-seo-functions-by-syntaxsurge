@@ -4,7 +4,7 @@
  * Plugin Name: Useful SEO Functions by SyntaxSurge
  * Plugin URI: https://serpcraft.com/
  * Description: This plugin provides useful SEO functions for your WordPress site.
- * Version: 1.0.8
+ * Version: 1.0.9
  * Author: SyntaxSurge
  * Author URI: https://syntaxsurge.com
  * License: GPLv2 or later
@@ -21,9 +21,13 @@ if (!function_exists('is_admin')) {
 }
 
 define('USEFUL_SEO_FUNCTIONS_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('USF_ASSETS_VERSION', '1.2.0');
 
 require_once plugin_dir_path(__FILE__) . 'includes/class-seo-settings.php';
 require_once plugin_dir_path(__FILE__) . 'includes/class-seo-functions-loader.php';
+
+// Enqueue your external global CSS file
+wp_enqueue_style('usf-global-styles', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'public/css/usf-global.css', array(), USF_ASSETS_VERSION);
 
 // Get all default seo function values
 function get_default_seo_settings()
@@ -165,14 +169,16 @@ function register_serpcraft_api_routes()
         'methods' => WP_REST_Server::ALLMETHODS,
         'callback' => 'handle_wp_v2_posts',
         'permission_callback' => '__return_true', // Add this line to make the route publicly accessible
-    ));
+    )
+    );
 
     // Register '/wp-json/serpcraft/v1/media' endpoint with support for all request types
     register_rest_route('serpcraft/v1', '/media', array(
         'methods' => WP_REST_Server::ALLMETHODS,
         'callback' => 'handle_wp_v2_media',
         'permission_callback' => '__return_true', // Add this line to make the route publicly accessible
-    ));
+    )
+    );
 
     // Register '/wp-json/serpcraft/v1/categories' endpoint with support for all request types
     register_rest_route('serpcraft/v1', '/categories', array(
@@ -184,7 +190,8 @@ function register_serpcraft_api_routes()
             ),
         ),
         'permission_callback' => '__return_true', // Add this line to make the route publicly accessible
-    ));
+    )
+    );
 }
 
 // Callback function to handle all types of requests for '/wp-json/serpcraft/v1/posts'
@@ -196,6 +203,6 @@ function handle_wp_v2_posts($request)
             return $posts_controller->get_items($request);
         case 'POST':
             return $posts_controller->create_item($request);
-            // Add more cases for PUT, DELETE, etc. as needed
+        // Add more cases for PUT, DELETE, etc. as needed
     }
 }

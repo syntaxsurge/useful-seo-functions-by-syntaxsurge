@@ -39,7 +39,7 @@ class SEO_Settings
         // Only load styles on your plugin's settings page
         $screen = get_current_screen();
         if (strpos($screen->base, 'seo-functions') !== false) {
-            wp_enqueue_style('seo_functions_admin_style', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'public/css/seo-admin.css', array(), '2.7.2'); // Versioning
+            wp_enqueue_style('seo_functions_admin_style', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'public/css/seo-admin.css', array(), USF_ASSETS_VERSION);
         }
     }
 

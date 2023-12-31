@@ -68,6 +68,6 @@ function inject_custom_table_styles() {
               </style>";
 
         // Enqueue your external CSS file
-        wp_enqueue_style('custom-table-styles', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'public/css/custom-table.css', array(), '1.1.2');
+        wp_enqueue_style('custom-table-styles', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'public/css/custom-table.css', array(), USF_ASSETS_VERSION);
     }
 }
