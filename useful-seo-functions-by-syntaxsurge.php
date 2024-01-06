@@ -4,7 +4,7 @@
  * Plugin Name: Useful SEO Functions by SyntaxSurge
  * Plugin URI: https://serpcraft.com/
  * Description: This plugin provides useful SEO functions for your WordPress site.
- * Version: 1.0.9
+ * Version: 1.1.0
  * Author: SyntaxSurge
  * Author URI: https://syntaxsurge.com
  * License: GPLv2 or later
@@ -22,12 +22,18 @@ if (!function_exists('is_admin')) {
 
 define('USEFUL_SEO_FUNCTIONS_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('USF_ASSETS_VERSION', '1.2.0');
+define('USF_ENDPOINT_PREFIX_SLUG', 'serpcraft');
 
 require_once plugin_dir_path(__FILE__) . 'includes/class-seo-settings.php';
 require_once plugin_dir_path(__FILE__) . 'includes/class-seo-functions-loader.php';
 
-// Enqueue your external global CSS file
-wp_enqueue_style('usf-global-styles', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'public/css/usf-global.css', array(), USF_ASSETS_VERSION);
+
+function usf_enqueue_styles() {
+    // Enqueue your external global CSS file
+    wp_enqueue_style('usf-global-styles', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'public/css/usf-global.css', array(), USF_ASSETS_VERSION);
+}
+add_action('wp_enqueue_scripts', 'usf_enqueue_styles');
+
 
 // Get all default seo function values
 function get_default_seo_settings()
@@ -106,6 +112,28 @@ function seo_functions_add_settings_link($links)
 }
 
 
+// Add custom rewrite rule to handle the custom REST API endpoint
+function wp_add_custom_rest_api_rewrite_rule() {
+    add_rewrite_rule('^' . USF_ENDPOINT_PREFIX_SLUG . '/(.*)?', 'index.php?rest_route=/$matches[1]', 'top');
+}
+add_action('init', 'wp_add_custom_rest_api_rewrite_rule');
+
+
+// Activation hook to flush the rewrite rules on plugin activation
+function wp_plugin_activation() {
+    wp_add_custom_rest_api_rewrite_rule();
+    flush_rewrite_rules();
+}
+register_activation_hook(__FILE__, 'wp_plugin_activation');
+
+
+// Deactivation hook to flush the rewrite rules on plugin deactivation
+function wp_plugin_deactivation() {
+    flush_rewrite_rules();
+}
+register_deactivation_hook(__FILE__, 'wp_plugin_deactivation');
+
+
 // Function to ensure Authorization header is passed through
 function ensure_http_authorization_header()
 {
@@ -129,6 +157,7 @@ function ensure_http_authorization_header()
 add_action('init', 'ensure_http_authorization_header');
 
 
+// Support custom header on authentication
 function custom_header_authenticate($user)
 {
     // No authentication for non-REST requests
@@ -157,52 +186,3 @@ function custom_header_authenticate($user)
 }
 
 add_filter('determine_current_user', 'custom_header_authenticate');
-
-
-// Hook to register new API routes
-add_action('rest_api_init', 'register_serpcraft_api_routes');
-
-function register_serpcraft_api_routes()
-{
-    // Register '/wp-json/serpcraft/v1/posts' endpoint with support for all request types
-    register_rest_route('serpcraft/v1', '/posts', array(
-        'methods' => WP_REST_Server::ALLMETHODS,
-        'callback' => 'handle_wp_v2_posts',
-        'permission_callback' => '__return_true', // Add this line to make the route publicly accessible
-    )
-    );
-
-    // Register '/wp-json/serpcraft/v1/media' endpoint with support for all request types
-    register_rest_route('serpcraft/v1', '/media', array(
-        'methods' => WP_REST_Server::ALLMETHODS,
-        'callback' => 'handle_wp_v2_media',
-        'permission_callback' => '__return_true', // Add this line to make the route publicly accessible
-    )
-    );
-
-    // Register '/wp-json/serpcraft/v1/categories' endpoint with support for all request types
-    register_rest_route('serpcraft/v1', '/categories', array(
-        'methods' => WP_REST_Server::ALLMETHODS,
-        'callback' => 'handle_wp_v2_categories',
-        'args' => array(
-            'per_page' => array(
-                'default' => 100,
-            ),
-        ),
-        'permission_callback' => '__return_true', // Add this line to make the route publicly accessible
-    )
-    );
-}
-
-// Callback function to handle all types of requests for '/wp-json/serpcraft/v1/posts'
-function handle_wp_v2_posts($request)
-{
-    $posts_controller = new WP_REST_Posts_Controller('post');
-    switch ($request->get_method()) {
-        case 'GET':
-            return $posts_controller->get_items($request);
-        case 'POST':
-            return $posts_controller->create_item($request);
-        // Add more cases for PUT, DELETE, etc. as needed
-    }
-}

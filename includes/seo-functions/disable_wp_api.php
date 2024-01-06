@@ -45,7 +45,7 @@ function apply_disable_wp_api() {
         if ( ! is_user_logged_in() ) {
             return new WP_Error(
                 'disabled_for_you_by_syntaxsurge',
-                __( 'Protected by SyntaxSurge.com' ),
+                __( 'Protected by SyntaxSurge.com and Serpcraft.com' ),
                 array( 'status' => 401 )
             );
         }
