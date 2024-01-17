@@ -32,7 +32,7 @@ function apply_faqs_short_code() {
     // Load CSS styles for FAQs
     if ( ! function_exists('faqs_enqueue_styles') ) {
         function faqs_enqueue_styles() {
-            wp_enqueue_style('faqs_styles', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'public/css/faqs.css', array(), USF_ASSETS_VERSION);
+            wp_enqueue_style('faqs_styles', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'assets/css/faqs.css', array(), USF_ASSETS_VERSION);
         }
         add_action('wp_enqueue_scripts', 'faqs_enqueue_styles');
     }

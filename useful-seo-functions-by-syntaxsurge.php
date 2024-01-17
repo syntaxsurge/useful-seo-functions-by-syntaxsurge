@@ -21,7 +21,7 @@ if (!function_exists('is_admin')) {
 }
 
 define('USEFUL_SEO_FUNCTIONS_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('USF_ASSETS_VERSION', '1.2.0');
+define('USF_ASSETS_VERSION', '1.2.1');
 define('USF_ENDPOINT_PREFIX_SLUG', 'serpcraft');
 
 require_once plugin_dir_path(__FILE__) . 'includes/class-seo-settings.php';
@@ -30,7 +30,7 @@ require_once plugin_dir_path(__FILE__) . 'includes/class-seo-functions-loader.ph
 
 function usf_enqueue_styles() {
     // Enqueue your external global CSS file
-    wp_enqueue_style('usf-global-styles', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'public/css/usf-global.css', array(), USF_ASSETS_VERSION);
+    wp_enqueue_style('usf-global-styles', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'assets/css/usf-global.css', array(), USF_ASSETS_VERSION);
 }
 add_action('wp_enqueue_scripts', 'usf_enqueue_styles');
 

@@ -32,7 +32,7 @@ function apply_custom_product_card_short_code() {
     // Load CSS styles for product cards
     if ( ! function_exists('cpc_enqueue_styles') ) {
         function cpc_enqueue_styles() {
-            wp_enqueue_style('cpc_styles', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'public/css/product-cards.css', array(), USF_ASSETS_VERSION);
+            wp_enqueue_style('cpc_styles', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'assets/css/product-cards.css', array(), USF_ASSETS_VERSION);
         }
         add_action('wp_enqueue_scripts', 'cpc_enqueue_styles');
     }

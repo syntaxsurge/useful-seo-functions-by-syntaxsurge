@@ -11,7 +11,7 @@ class SERPCraft_Autoposting
     public function __construct()
     {
         $this->handle_form_submission();
-        wp_enqueue_script('serpcraft_admin_js', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'public/js/serpcraft.js', array(), '1.0', true);
+        wp_enqueue_script('serpcraft_admin_js', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'assets/js/serpcraft.js', array(), '1.0', true);
     }
 
     private function handle_form_submission()
