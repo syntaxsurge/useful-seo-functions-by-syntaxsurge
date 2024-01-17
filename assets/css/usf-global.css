@@ -30,3 +30,10 @@ Make images resposive
 .img-responsive {
     width: 100%;
 }
+
+/**
+Link styles
+**/
+a {
+    word-wrap: break-word;
+}
