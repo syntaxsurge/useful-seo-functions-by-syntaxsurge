@@ -2,6 +2,8 @@
 .table-responsive {
     width: 100%;
     margin-bottom: 1.5rem;
+    overflow-x: auto;
+    /* Allows horizontal scrolling on the table container */
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
@@ -27,7 +29,14 @@
 
 .table-responsive td,
 .table-responsive th {
-    white-space: nowrap;
+    min-width: 130px;
+    /* Adjust as needed - this ensures that cells have a minimum width */
+    word-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+    /* Ensures content doesn't overflow the cell's bounds */
+    text-overflow: ellipsis;
+    /* Adds an ellipsis to cells that are too small */
 }
 
 table {

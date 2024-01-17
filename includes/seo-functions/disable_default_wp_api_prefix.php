@@ -13,13 +13,13 @@ function disable_default_wp_api_prefix()
 {
     return [
         'title' => 'Disable Default WP API Prefix',
-        'description' => 'Disables the default "wp-json" REST API prefix to prevent public access to the WordPress REST API under the default namespace. This ensures that REST API endpoints are only accessible through custom prefixes, enhancing the security of your WordPress site by obscuring the standard REST API entry points. If this feature is disabled, you can only use the `/serpcraft/wp/v2/` endpoint for the API.',
+        'description' => 'Disables the default `wp-json` REST API prefix to prevent public access to the WordPress REST API under the default namespace. This ensures that REST API endpoints are only accessible through custom prefixes, enhancing the security of your WordPress site by obscuring the standard REST API entry points. However, do not enable this feature if you are using plugins or software such as Elementor, Site Kit by Google, or any others that rely on the default WordPress API prefix. These tools require the standard `wp-json` prefix to function correctly. If this feature is enabled, you can only use the /serpcraft/wp/v2/ endpoint for the API.',
         'inputs' => [
             [
                 'type' => 'checkbox',
                 'label' => 'Disable default "wp-json" prefix',
                 'name' => 'enabled',
-                'default' => 1  // Check the box by default (optional, omit if you want it unchecked by default)
+                'default' => 0  // Check the box by default (optional, set 0 if you want it unchecked by default)
             ],
         ],
         'category' => 'Security Settings',
@@ -28,7 +28,8 @@ function disable_default_wp_api_prefix()
 }
 
 // Applied function (apply + file name)
-function apply_disable_default_wp_api_prefix() {
+function apply_disable_default_wp_api_prefix()
+{
     // Hook into 'rest_pre_serve_request' to handle the request before sending it.
     add_filter('rest_pre_serve_request', function ($served, $result, $request, $server) {
         // Get the full request URI
