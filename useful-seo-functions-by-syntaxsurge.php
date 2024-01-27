@@ -21,7 +21,7 @@ if (!function_exists('is_admin')) {
 }
 
 define('USEFUL_SEO_FUNCTIONS_PLUGIN_URL', plugin_dir_url(__FILE__));
-define('USF_ASSETS_VERSION', '1.2.1');
+define('USF_ASSETS_VERSION', '1.2.2');
 define('USF_ENDPOINT_PREFIX_SLUG', 'serpcraft');
 
 require_once plugin_dir_path(__FILE__) . 'includes/class-seo-settings.php';
