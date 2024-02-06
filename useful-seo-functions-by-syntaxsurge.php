@@ -27,8 +27,12 @@ define('USF_ENDPOINT_PREFIX_SLUG', 'serpcraft');
 require_once plugin_dir_path(__FILE__) . 'includes/class-seo-settings.php';
 require_once plugin_dir_path(__FILE__) . 'includes/class-seo-functions-loader.php';
 
+// Force WordPress to use PclZip for extraction, which can help in cases where ZipArchive encounters compatibility issues
+// To also support ZIP Extraction of WordPress 6.4.3 and later
+add_filter('unzip_file_use_ziparchive', '__return_false', 100);
 
-function usf_enqueue_styles() {
+function usf_enqueue_styles()
+{
     // Enqueue your external global CSS file
     wp_enqueue_style('usf-global-styles', USEFUL_SEO_FUNCTIONS_PLUGIN_URL . 'assets/css/usf-global.css', array(), USF_ASSETS_VERSION);
 }
@@ -88,6 +92,7 @@ register_activation_hook(__FILE__, 'activate_useful_seo_functions');
 // Initialize includes
 function initialize_seo_plugin()
 {
+    // Check if user is admin
     if (is_admin()) {
         $seo_settings = new SEO_Settings();
     }
@@ -113,14 +118,16 @@ function seo_functions_add_settings_link($links)
 
 
 // Add custom rewrite rule to handle the custom REST API endpoint
-function wp_add_custom_rest_api_rewrite_rule() {
+function wp_add_custom_rest_api_rewrite_rule()
+{
     add_rewrite_rule('^' . USF_ENDPOINT_PREFIX_SLUG . '/(.*)?', 'index.php?rest_route=/$matches[1]', 'top');
 }
 add_action('init', 'wp_add_custom_rest_api_rewrite_rule');
 
 
 // Activation hook to flush the rewrite rules on plugin activation
-function wp_plugin_activation() {
+function wp_plugin_activation()
+{
     wp_add_custom_rest_api_rewrite_rule();
     flush_rewrite_rules();
 }
@@ -128,7 +135,8 @@ register_activation_hook(__FILE__, 'wp_plugin_activation');
 
 
 // Deactivation hook to flush the rewrite rules on plugin deactivation
-function wp_plugin_deactivation() {
+function wp_plugin_deactivation()
+{
     flush_rewrite_rules();
 }
 register_deactivation_hook(__FILE__, 'wp_plugin_deactivation');

@@ -287,7 +287,7 @@ git pull
 
 We welcome contributions to improve this plugin. If you have suggestions or modifications, please feel free to submit a pull request.
 
-To submit a pull request:
+**To submit a pull request:**
 
 1. Fork the repository.
 2. Create a new branch (`git checkout -b feature-branch`).
@@ -295,5 +295,13 @@ To submit a pull request:
 4. Commit your changes (`git commit -am 'Add some feature'`).
 5. Push to the branch (`git push origin feature-branch`).
 6. Create a new Pull Request.
+
+**If you want to compress your new update into a ZIP file on Ubuntu, you can do so with the following command:**
+```bash
+cd /www/wwwroot/wordpress.com.test/wp-content/plugins/useful-seo-functions/ && \
+sudo zip -r ./z-useful-seo-functions-1.1.1.zip * -x '.git*' '*.zip'
+```
+
+Simply change to the correct directory and update the version in the file name accordingly.
 
 Your contributions and suggestions are greatly appreciated!
