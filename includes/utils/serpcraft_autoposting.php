@@ -67,7 +67,7 @@ class SERPCraft_Autoposting
         </div>
 
         <!-- Display generated password below the card form -->
-        <?= $this->generated_password ?>
+        <?php echo $this->generated_password; ?>
 <?php
     }
 

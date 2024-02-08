@@ -50,7 +50,12 @@ class SEO_Settings
 
     public function export_plugin_as_zip()
     {
+        require_once(ABSPATH . 'wp-admin/includes/file.php'); // Include the file that contains WP_Filesystem
 
+        WP_Filesystem(); // Initialize the WP_Filesystem
+    
+        global $wp_filesystem; // Use the global $wp_filesystem object
+    
         // Get the version number of plugin
         if (!function_exists('get_plugin_data')) {
             require_once(ABSPATH . 'wp-admin/includes/plugin.php');
@@ -97,11 +102,18 @@ class SEO_Settings
 
                 $zip->close();
 
-                header('Content-Type: application/zip');
-                header('Content-Disposition: attachment; filename="' . basename($zip_file) . '"');
-                readfile($zip_file);
-                unlink($zip_file);
-                exit;
+                if ($wp_filesystem) {
+                    header('Content-Type: application/zip');
+                    header('Content-Disposition: attachment; filename="' . basename($zip_file) . '"');
+                    
+                    // Use the WP_Filesystem method to read the file's contents
+                    echo $wp_filesystem->get_contents($zip_file);
+                    
+                    // Delete the file after sending it to the user
+                    $wp_filesystem->delete($zip_file);
+                    
+                    exit;
+                }            
             } else {
                 wp_die('Failed to create zip file');
             }
@@ -114,11 +126,18 @@ class SEO_Settings
             if ($archive->error_code != 0) {
                 wp_die('Failed to create zip file: ' . $archive->errorInfo(true));
             } else {
-                header('Content-Type: application/zip');
-                header('Content-Disposition: attachment; filename="' . basename($zip_file) . '"');
-                readfile($zip_file);
-                unlink($zip_file);
-                exit;
+                if ($wp_filesystem) {
+                    header('Content-Type: application/zip');
+                    header('Content-Disposition: attachment; filename="' . basename($zip_file) . '"');
+                    
+                    // Use the WP_Filesystem method to read the file's contents
+                    echo $wp_filesystem->get_contents($zip_file);
+                    
+                    // Delete the file after sending it to the user
+                    $wp_filesystem->delete($zip_file);
+                    
+                    exit;
+                }            
             }
         }
     }

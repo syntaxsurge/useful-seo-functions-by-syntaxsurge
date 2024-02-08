@@ -299,9 +299,9 @@ We welcome contributions to improve this plugin. If you have suggestions or modi
 **If you want to compress your new update into a ZIP file on Ubuntu, you can do so with the following command:**
 ```bash
 cd /www/wwwroot/wordpress.com.test/wp-content/plugins/useful-seo-functions/ && \
-sudo zip -r ./z-useful-seo-functions-1.1.1.zip * -x '.git*' '*.zip'
+sudo zip -r ./useful-seo-functions-by-syntaxsurge.zip * -x '.git*' '*.zip'
 ```
 
-Simply change to the correct directory and update the version in the file name accordingly.
+Simply change to the correct directory.
 
 Your contributions and suggestions are greatly appreciated!
