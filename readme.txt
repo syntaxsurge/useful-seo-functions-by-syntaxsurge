@@ -5,7 +5,7 @@ Donate link: https://www.paypal.com/paypalme/syntaxsurge
 Tags: SEO, security, affiliate marketing, WordPress, SERP, Amazon Affiliate
 Requires at least: 5.9
 Tested up to: 6.2.3
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -55,6 +55,9 @@ We regularly update the plugin to introduce new features, fix bugs, and ensure c
 
 == Changelog ==
 
+= 1.1.2 =
+- Introduced Custom CTA Styling feature for comprehensive customization of CTA button appearance, including support for background and text color adjustments.
+
 = 1.1.1 =
 - Disabled 'Disable Default WP API Prefix' by default.
 - Enhanced table responsiveness.
@@ -83,6 +86,9 @@ We regularly update the plugin to introduce new features, fix bugs, and ensure c
 
 
 == Upgrade Notice ==
+
+= 1.1.2 =
+Critical update to enhance the visual appeal of your site with customizable CTA button styles. Highly recommended for improving user engagement.
 
 = 1.1.1 =
 Essential update for better compatibility and responsiveness.

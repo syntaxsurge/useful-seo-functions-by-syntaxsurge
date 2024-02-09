@@ -4,7 +4,7 @@
  * Plugin Name: Useful SEO Functions by SyntaxSurge
  * Plugin URI: https://serpcraft.com/
  * Description: This plugin provides useful SEO functions for your WordPress site.
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: SyntaxSurge
  * Author URI: https://syntaxsurge.com
  * License: GPLv2 or later
